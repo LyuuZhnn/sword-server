@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>File Server - TJKT</title>
+
+<style>
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+
+    font-family: Arial, sans-serif;
+
+    min-height: 100vh;
+
+    color: white;
+
+    background:
+    linear-gradient(
+        rgba(5,8,20,.90),
+        rgba(5,8,20,.96)
+    ),
+    url("background.jpg")
+    center/cover fixed;
+}
+
+.container {
+
+    max-width: 1000px;
+
+    margin: auto;
+
+    padding: 30px 20px;
+}
+
+h1 {
+
+    text-align: center;
+
+    font-size: 32px;
+}
+
+.subtitle {
+
+    text-align: center;
+
+    color: #aaa;
+
+    margin: 8px 0 30px;
+}
+
+.upload-box {
+
+    padding: 25px;
+
+    border-radius: 20px;
+
+    background:
+    rgba(255,255,255,.08);
+
+    border:
+    1px solid rgba(255,255,255,.12);
+
+    backdrop-filter: blur(12px);
+
+    margin-bottom: 25px;
+}
+
+input[type="file"] {
+
+    width: 100%;
+
+    padding: 15px;
+
+    margin-bottom: 15px;
+
+    border-radius: 12px;
+
+    background:
+    rgba(0,0,0,.3);
+
+    color: white;
+
+    border:
+    1px solid rgba(255,255,255,.12);
+}
+
+button {
+
+    width: 100%;
+
+    padding: 14px;
+
+    border: none;
+
+    border-radius: 12px;
+
+    color: white;
+
+    background:
+    rgba(0,255,150,.15);
+
+    border:
+    1px solid rgba(0,255,150,.3);
+
+    font-size: 16px;
+
+    cursor: pointer;
+}
+
+button:hover {
+
+    background:
+    rgba(0,255,150,.25);
+}
+
+#message {
+
+    margin-top: 15px;
+
+    text-align: center;
+
+    color: #8fffd0;
+}
+
+.files-box {
+
+    padding: 25px;
+
+    border-radius: 20px;
+
+    background:
+    rgba(255,255,255,.08);
+
+    border:
+    1px solid rgba(255,255,255,.12);
+
+    backdrop-filter: blur(12px);
+}
+
+.file {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 15px;
+
+    padding: 16px;
+
+    margin-bottom: 12px;
+
+    border-radius: 14px;
+
+    background:
+    rgba(0,0,0,.3);
+}
+
+.file-name {
+
+    word-break: break-word;
+}
+
+.file-size {
+
+    color: #888;
+
+    font-size: 13px;
+
+    margin-top: 5px;
+}
+
+.download {
+
+    flex-shrink: 0;
+
+    padding: 9px 13px;
+
+    border-radius: 10px;
+
+    text-decoration: none;
+
+    color: white;
+
+    background:
+    rgba(255,255,255,.12);
+}
+
+.download:hover {
+
+    background:
+    rgba(255,255,255,.22);
+}
+
+.empty {
+
+    text-align: center;
+
+    color: #888;
+
+    padding: 25px;
+}
+
+.back {
+
+    display: block;
+
+    margin-top: 25px;
+
+    text-align: center;
+
+    color: #aaa;
+
+    text-decoration: none;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>📁 File Server</h1>
+
+<p class="subtitle">
+TJKT Network File Sharing
+</p>
+
+
+<div class="upload-box">
+
+<h3>
+📤 Upload File
+</h3>
+
+<br>
+
+<input
+type="file"
+id="fileInput"
+>
+
+<button
+onclick="uploadFile()">
+
+⬆️ Upload ke Server
+
+</button>
+
+<div id="message"></div>
+
+</div>
+
+
+<div class="files-box">
+
+<h3>
+📂 File di Server
+</h3>
+
+<br>
+
+<div id="fileList">
+
+<div class="empty">
+Memuat daftar file...
+</div>
+
+</div>
+
+</div>
+
+
+<a
+href="index.html"
+class="back">
+
+← Kembali ke Dashboard
+
+</a>
+
+</div>
+
+
+<script>
+
+async function loadFiles() {
+
+    const list =
+        document.getElementById("fileList");
+
+    try {
+
+        const response =
+            await fetch("/api/files");
+
+        const files =
+            await response.json();
+
+        list.innerHTML = "";
+
+        if (files.length === 0) {
+
+            list.innerHTML =
+                '<div class="empty">' +
+                'Belum ada file di server.' +
+                '</div>';
+
+            return;
+        }
+
+        files.forEach(file => {
+
+            const item =
+                document.createElement("div");
+
+            item.className = "file";
+
+            const info =
+                document.createElement("div");
+
+            info.innerHTML =
+                '<div class="file-name">📄 ' +
+                escapeHTML(file.name) +
+                '</div>' +
+
+                '<div class="file-size">' +
+                file.size +
+                '</div>';
+
+            const link =
+                document.createElement("a");
+
+            link.href = file.url;
+
+            link.download = file.name;
+
+            link.className = "download";
+
+            link.textContent =
+                "⬇️ Download";
+
+            item.appendChild(info);
+
+            item.appendChild(link);
+
+            list.appendChild(item);
+
+        });
+
+    } catch (error) {
+
+        list.innerHTML =
+            '<div class="empty">' +
+            'Gagal mengambil daftar file.' +
+            '</div>';
+
+    }
+
+}
+
+
+async function uploadFile() {
+
+    const input =
+        document.getElementById("fileInput");
+
+    const message =
+        document.getElementById("message");
+
+    if (!input.files.length) {
+
+        message.textContent =
+            "⚠️ Pilih file terlebih dahulu.";
+
+        return;
+    }
+
+    const formData =
+        new FormData();
+
+    formData.append(
+        "file",
+        input.files[0]
+    );
+
+    message.textContent =
+        "⏳ Mengupload...";
+
+    try {
+
+        const response =
+            await fetch(
+                "/api/upload",
+                {
+                    method: "POST",
+                    body: formData
+                }
+            );
+
+        const result =
+            await response.json();
+
+        if (result.success) {
+
+            message.textContent =
+                "✅ " +
+                result.message +
+                ": " +
+                result.filename;
+
+            input.value = "";
+
+            loadFiles();
+
+        } else {
+
+            message.textContent =
+                "❌ " +
+                result.message;
+
+        }
+
+    } catch (error) {
+
+        message.textContent =
+            "❌ Upload gagal.";
+
+    }
+
+}
+
+
+function escapeHTML(text) {
+
+    const div =
+        document.createElement("div");
+
+    div.textContent = text;
+
+    return div.innerHTML;
+}
+
+
+loadFiles();
+
+</script>
+
+</body>
+
+</html>

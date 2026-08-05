@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>System Monitor - TJKT</title>
+
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    min-height: 100vh;
+    color: white;
+    background:
+        linear-gradient(rgba(5,8,20,.90), rgba(5,8,20,.96)),
+        url("background.jpg") center/cover fixed;
+}
+
+.container {
+    max-width: 1000px;
+    margin: auto;
+    padding: 30px 20px;
+}
+
+h1 {
+    text-align: center;
+    font-size: 30px;
+}
+
+.subtitle {
+    text-align: center;
+    color: #aaa;
+    margin: 8px 0 30px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 18px;
+}
+
+.card {
+    padding: 25px;
+    border-radius: 18px;
+    background: rgba(255,255,255,.08);
+    border: 1px solid rgba(255,255,255,.12);
+    backdrop-filter: blur(12px);
+}
+
+.icon {
+    font-size: 35px;
+    margin-bottom: 15px;
+}
+
+.name {
+    color: #aaa;
+    margin-bottom: 8px;
+}
+
+.value {
+    font-size: 24px;
+    color: #8fffd0;
+    word-break: break-word;
+}
+
+.status {
+    margin-top: 25px;
+    padding: 15px;
+    text-align: center;
+    border-radius: 12px;
+    color: #6effbd;
+    background: rgba(0,255,150,.1);
+    border: 1px solid rgba(0,255,150,.25);
+}
+
+.back {
+    display: block;
+    margin-top: 25px;
+    text-align: center;
+    color: #aaa;
+    text-decoration: none;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>📊 System Monitor</h1>
+
+<p class="subtitle">
+TJKT Server System Information
+</p>
+
+<div class="grid">
+
+<div class="card">
+<div class="icon">💻</div>
+<div class="name">Operating System</div>
+<div class="value" id="os">Loading...</div>
+</div>
+
+<div class="card">
+<div class="icon">🖥️</div>
+<div class="name">Hostname</div>
+<div class="value" id="hostname">Loading...</div>
+</div>
+
+<div class="card">
+<div class="icon">⚙️</div>
+<div class="name">CPU Threads</div>
+<div class="value" id="cpu">Loading...</div>
+</div>
+
+<div class="card">
+<div class="icon">💾</div>
+<div class="name">Storage Total</div>
+<div class="value" id="storage">Loading...</div>
+</div>
+
+<div class="card">
+<div class="icon">📦</div>
+<div class="name">Storage Used</div>
+<div class="value" id="used">Loading...</div>
+</div>
+
+<div class="card">
+<div class="icon">🗄️</div>
+<div class="name">Storage Free</div>
+<div class="value" id="free">Loading...</div>
+</div>
+
+<div class="card">
+<div class="icon">⏱️</div>
+<div class="name">Server Uptime</div>
+<div class="value" id="uptime">Loading...</div>
+</div>
+
+</div>
+
+<div class="status">
+● SERVER MONITOR ACTIVE
+</div>
+
+<a href="index.html" class="back">
+← Kembali ke Dashboard
+</a>
+
+</div>
+
+<script>
+async function loadSystem() {
+    try {
+        const response = await fetch("/api/system");
+        const data = await response.json();
+
+        document.getElementById("os").textContent =
+            data.os;
+
+        document.getElementById("hostname").textContent =
+            data.hostname || "Termux";
+
+        document.getElementById("cpu").textContent =
+            data.cpu;
+
+        document.getElementById("storage").textContent =
+            data.storage_total;
+
+        document.getElementById("used").textContent =
+            data.storage_used;
+
+        document.getElementById("free").textContent =
+            data.storage_free;
+
+        let seconds = parseInt(data.uptime);
+
+        let hours = Math.floor(seconds / 3600);
+        let minutes = Math.floor((seconds % 3600) / 60);
+        let secs = seconds % 60;
+
+        document.getElementById("uptime").textContent =
+            hours + "h " +
+            minutes + "m " +
+            secs + "s";
+
+    } catch (error) {
+        document.getElementById("os").textContent =
+            "Server Error";
+
+        console.log(error);
+    }
+}
+
+loadSystem();
+
+setInterval(loadSystem, 3000);
+</script>
+
+</body>
+</html>

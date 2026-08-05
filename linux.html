@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Linux Lab - TJKT</title>
+
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    min-height: 100vh;
+    color: white;
+
+    background:
+        linear-gradient(rgba(5,8,20,.90), rgba(5,8,20,.96)),
+        url("background.jpg") center/cover fixed;
+}
+
+.container {
+    max-width: 1100px;
+    margin: auto;
+    padding: 30px 20px;
+}
+
+h1 {
+    text-align: center;
+    font-size: 32px;
+}
+
+.subtitle {
+    text-align: center;
+    color: #aaa;
+    margin: 8px 0 30px;
+}
+
+.search {
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 20px;
+
+    border-radius: 12px;
+
+    border: 1px solid rgba(255,255,255,.12);
+
+    background: rgba(0,0,0,.35);
+
+    color: white;
+
+    font-size: 16px;
+
+    outline: none;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns:
+        repeat(auto-fit, minmax(300px, 1fr));
+
+    gap: 18px;
+}
+
+.card {
+    padding: 22px;
+
+    border-radius: 18px;
+
+    background:
+        rgba(255,255,255,.08);
+
+    border:
+        1px solid rgba(255,255,255,.12);
+
+    backdrop-filter: blur(12px);
+
+    transition: .3s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+
+    background:
+        rgba(255,255,255,.13);
+}
+
+.icon {
+    font-size: 32px;
+    margin-bottom: 12px;
+}
+
+h3 {
+    margin-bottom: 10px;
+}
+
+.description {
+    color: #aaa;
+    font-size: 14px;
+    line-height: 1.5;
+    margin-bottom: 15px;
+}
+
+.command {
+    display: block;
+
+    padding: 12px;
+
+    border-radius: 10px;
+
+    background:
+        rgba(0,0,0,.45);
+
+    color: #8fffd0;
+
+    font-family: monospace;
+
+    overflow-x: auto;
+}
+
+.back {
+    display: block;
+
+    margin-top: 30px;
+
+    text-align: center;
+
+    color: #aaa;
+
+    text-decoration: none;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>🐧 Linux Lab</h1>
+
+<p class="subtitle">
+Linux Command Reference untuk TJKT
+</p>
+
+<input
+    type="text"
+    id="search"
+    class="search"
+    placeholder="🔍 Cari command Linux..."
+>
+
+<div class="grid" id="commands">
+
+<div class="card">
+<div class="icon">📂</div>
+<h3>ls</h3>
+<p class="description">
+Menampilkan isi direktori.
+</p>
+<code class="command">ls</code>
+</div>
+
+<div class="card">
+<div class="icon">📁</div>
+<h3>cd</h3>
+<p class="description">
+Berpindah direktori.
+</p>
+<code class="command">cd nama_folder</code>
+</div>
+
+<div class="card">
+<div class="icon">📍</div>
+<h3>pwd</h3>
+<p class="description">
+Menampilkan lokasi direktori saat ini.
+</p>
+<code class="command">pwd</code>
+</div>
+
+<div class="card">
+<div class="icon">📄</div>
+<h3>touch</h3>
+<p class="description">
+Membuat file kosong.
+</p>
+<code class="command">touch file.txt</code>
+</div>
+
+<div class="card">
+<div class="icon">📂</div>
+<h3>mkdir</h3>
+<p class="description">
+Membuat direktori baru.
+</p>
+<code class="command">mkdir folder</code>
+</div>
+
+<div class="card">
+<div class="icon">📋</div>
+<h3>cp</h3>
+<p class="description">
+Menyalin file atau folder.
+</p>
+<code class="command">cp file.txt backup.txt</code>
+</div>
+
+<div class="card">
+<div class="icon">🚚</div>
+<h3>mv</h3>
+<p class="description">
+Memindahkan atau mengganti nama file.
+</p>
+<code class="command">mv file.txt folder/</code>
+</div>
+
+<div class="card">
+<div class="icon">🗑️</div>
+<h3>rm</h3>
+<p class="description">
+Menghapus file.
+</p>
+<code class="command">rm file.txt</code>
+</div>
+
+<div class="card">
+<div class="icon">👀</div>
+<h3>cat</h3>
+<p class="description">
+Menampilkan isi file.
+</p>
+<code class="command">cat file.txt</code>
+</div>
+
+<div class="card">
+<div class="icon">✏️</div>
+<h3>nano</h3>
+<p class="description">
+Membuka editor teks terminal.
+</p>
+<code class="command">nano file.txt</code>
+</div>
+
+<div class="card">
+<div class="icon">🔐</div>
+<h3>chmod</h3>
+<p class="description">
+Mengubah permission file.
+</p>
+<code class="command">chmod 755 file.sh</code>
+</div>
+
+<div class="card">
+<div class="icon">👤</div>
+<h3>whoami</h3>
+<p class="description">
+Menampilkan user yang sedang digunakan.
+</p>
+<code class="command">whoami</code>
+</div>
+
+<div class="card">
+<div class="icon">💾</div>
+<h3>df</h3>
+<p class="description">
+Melihat penggunaan storage.
+</p>
+<code class="command">df -h</code>
+</div>
+
+<div class="card">
+<div class="icon">🧠</div>
+<h3>free</h3>
+<p class="description">
+Melihat penggunaan RAM.
+</p>
+<code class="command">free -h</code>
+</div>
+
+<div class="card">
+<div class="icon">🌐</div>
+<h3>ip</h3>
+<p class="description">
+Melihat dan mengatur informasi jaringan.
+</p>
+<code class="command">ip addr</code>
+</div>
+
+<div class="card">
+<div class="icon">📡</div>
+<h3>ping</h3>
+<p class="description">
+Menguji konektivitas ke host.
+</p>
+<code class="command">ping 8.8.8.8</code>
+</div>
+
+<div class="card">
+<div class="icon">🔎</div>
+<h3>ss</h3>
+<p class="description">
+Melihat koneksi dan port jaringan.
+</p>
+<code class="command">ss -tuln</code>
+</div>
+
+<div class="card">
+<div class="icon">📦</div>
+<h3>apt</h3>
+<p class="description">
+Mengelola paket pada Debian/Ubuntu.
+</p>
+<code class="command">apt update</code>
+</div>
+
+<div class="card">
+<div class="icon">⚡</div>
+<h3>systemctl</h3>
+<p class="description">
+Mengelola service pada sistem Linux yang menggunakan systemd.
+</p>
+<code class="command">systemctl status nama-service</code>
+</div>
+
+<div class="card">
+<div class="icon">📜</div>
+<h3>history</h3>
+<p class="description">
+Melihat riwayat command yang pernah dijalankan.
+</p>
+<code class="command">history</code>
+</div>
+
+</div>
+
+<a href="index.html" class="back">
+← Kembali ke Dashboard
+</a>
+
+</div>
+
+<script>
+
+const search =
+document.getElementById("search");
+
+const cards =
+document.querySelectorAll(".card");
+
+search.addEventListener("input", function() {
+
+    const keyword =
+        this.value.toLowerCase();
+
+    cards.forEach(card => {
+
+        const text =
+            card.textContent.toLowerCase();
+
+        if (text.includes(keyword)) {
+
+            card.style.display = "";
+
+        } else {
+
+            card.style.display = "none";
+
+        }
+
+    });
+
+});
+
+</script>
+
+</body>
+</html>

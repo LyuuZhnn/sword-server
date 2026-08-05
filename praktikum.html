@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Praktikum TJKT</title>
+
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    min-height: 100vh;
+    color: white;
+
+    background:
+        linear-gradient(rgba(5,8,20,.90), rgba(5,8,20,.96)),
+        url("background.jpg") center/cover fixed;
+}
+
+.container {
+    max-width: 1100px;
+    margin: auto;
+    padding: 30px 20px;
+}
+
+h1 {
+    text-align: center;
+    font-size: 32px;
+}
+
+.subtitle {
+    text-align: center;
+    color: #aaa;
+    margin: 8px 0 30px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns:
+        repeat(auto-fit, minmax(250px, 1fr));
+    gap: 18px;
+}
+
+.card {
+    padding: 25px;
+    min-height: 200px;
+
+    border-radius: 18px;
+
+    background: rgba(255,255,255,.08);
+
+    border:
+        1px solid rgba(255,255,255,.12);
+
+    backdrop-filter: blur(12px);
+
+    transition: .3s;
+}
+
+.card:hover {
+    transform: translateY(-6px);
+
+    background:
+        rgba(255,255,255,.13);
+
+    box-shadow:
+        0 15px 35px rgba(0,0,0,.35);
+}
+
+.number {
+    font-size: 14px;
+    color: #8fffd0;
+    margin-bottom: 10px;
+}
+
+.icon {
+    font-size: 38px;
+    margin-bottom: 15px;
+}
+
+h3 {
+    margin-bottom: 10px;
+}
+
+p {
+    color: #aaa;
+    line-height: 1.6;
+    font-size: 14px;
+}
+
+.level {
+    display: inline-block;
+
+    margin-top: 15px;
+
+    padding: 6px 10px;
+
+    border-radius: 20px;
+
+    font-size: 12px;
+
+    color: #8fffd0;
+
+    background:
+        rgba(0,255,150,.08);
+
+    border:
+        1px solid rgba(0,255,150,.18);
+}
+
+.back {
+    display: block;
+    margin-top: 30px;
+    text-align: center;
+    color: #aaa;
+    text-decoration: none;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>🛠️ Praktikum TJKT</h1>
+
+<p class="subtitle">
+Laboratorium Praktik Teknik Jaringan Komputer dan Telekomunikasi
+</p>
+
+<div class="grid">
+
+<div class="card">
+<div class="number">PRAKTIKUM 01</div>
+<div class="icon">🧮</div>
+
+<h3>Subnetting</h3>
+
+<p>
+Latihan menentukan Network Address,
+Broadcast Address, Host Range,
+Subnet Mask, dan jumlah host.
+</p>
+
+<span class="level">
+DASAR
+</span>
+</div>
+
+
+<div class="card">
+<div class="number">PRAKTIKUM 02</div>
+<div class="icon">🌐</div>
+
+<h3>IP Address</h3>
+
+<p>
+Mempelajari IPv4, IPv6, private IP,
+public IP, gateway, DNS,
+dan konfigurasi alamat jaringan.
+</p>
+
+<span class="level">
+DASAR
+</span>
+</div>
+
+
+<div class="card">
+<div class="number">PRAKTIKUM 03</div>
+<div class="icon">🐧</div>
+
+<h3>Linux Administration</h3>
+
+<p>
+Latihan command line, membuat file,
+permission, user management,
+package, dan administrasi Linux.
+</p>
+
+<span class="level">
+MENENGAH
+</span>
+</div>
+
+
+<div class="card">
+<div class="number">PRAKTIKUM 04</div>
+<div class="icon">📡</div>
+
+<h3>MikroTik</h3>
+
+<p>
+Konfigurasi IP Address,
+DHCP Server, NAT, firewall,
+routing, dan wireless.
+</p>
+
+<span class="level">
+MENENGAH
+</span>
+</div>
+
+
+<div class="card">
+<div class="number">PRAKTIKUM 05</div>
+<div class="icon">🔀</div>
+
+<h3>Cisco</h3>
+
+<p>
+Konfigurasi dasar router dan switch,
+VLAN, trunking, routing,
+dan simulasi jaringan.
+</p>
+
+<span class="level">
+MENENGAH
+</span>
+</div>
+
+
+<div class="card">
+<div class="number">PRAKTIKUM 06</div>
+<div class="icon">🖥️</div>
+
+<h3>Web Server</h3>
+
+<p>
+Membuat web server,
+menjalankan service,
+mengatur port,
+dan mengakses server melalui jaringan.
+</p>
+
+<span class="level">
+MENENGAH
+</span>
+</div>
+
+
+<div class="card">
+<div class="number">PRAKTIKUM 07</div>
+<div class="icon">📁</div>
+
+<h3>File Server</h3>
+
+<p>
+Membuat server berbagi file
+untuk mengirim dan menerima
+dokumen dalam jaringan.
+</p>
+
+<span class="level">
+MENENGAH
+</span>
+</div>
+
+
+<div class="card">
+<div class="number">PRAKTIKUM 08</div>
+<div class="icon">🔐</div>
+
+<h3>Network Security</h3>
+
+<p>
+Mempelajari firewall,
+permission, authentication,
+dan keamanan dasar jaringan.
+</p>
+
+<span class="level">
+LANJUTAN
+</span>
+</div>
+
+
+<div class="card">
+<div class="number">PRAKTIKUM 09</div>
+<div class="icon">☁️</div>
+
+<h3>Cloud & Virtualization</h3>
+
+<p>
+Pengenalan virtual machine,
+cloud infrastructure,
+virtual network,
+dan storage.
+</p>
+
+<span class="level">
+LANJUTAN
+</span>
+</div>
+
+
+<div class="card">
+<div class="number">PRAKTIKUM 10</div>
+<div class="icon">🔧</div>
+
+<h3>Troubleshooting</h3>
+
+<p>
+Menganalisis masalah koneksi,
+IP conflict, DNS,
+gateway, dan service server.
+</p>
+
+<span class="level">
+LANJUTAN
+</span>
+</div>
+
+</div>
+
+<a href="index.html" class="back">
+← Kembali ke Dashboard
+</a>
+
+</div>
+
+</body>
+</html>
