@@ -48,9 +48,247 @@
 
 <section id="dashboard" class="hero">
 
+<div class="card">
+<h2>🌐 Server Status</h2>
+<h1 id="serverStatus">ONLINE</h1>
+</div>
+
+<div class="card">
+<h2>⬆ Upload</h2>
+<h1 id="uploadSpeed">0 Mbps</h1>
+</div>
+
+<div class="card">
+<h2>⬇ Download</h2>
+<h1 id="downloadSpeed">0 Mbps</h1>
+</div>
+
 <h1>TNOS V8 ULTIMATE</h1>
 
 <h2>WELCOME</h2>
+
+<section class="grid">
+
+<div class="card">
+<h2>🖥 CPU</h2>
+<h1 id="cpu">0%</h1>
+</div>
+
+<div class="card">
+<h2>💾 RAM</h2>
+<h1 id="ram">0%</h1>
+</div>
+
+<div class="card">
+<h2>📡 Ping</h2>
+<h1 id="ping">0 ms</h1>
+</div>
+
+<div class="card">
+<h2>👥 Online User</h2>
+<h1 id="onlineUser">0</h1>
+</div>
+
+<div class="card">
+<h2>⏱ Uptime</h2>
+<h1 id="uptime">00:00:00</h1>
+</div>
+
+<div class="card">
+<h2>📊 Server Load</h2>
+
+<div class="progress">
+<div class="bar" id="serverBar"></div>
+</div>
+
+</div>
+
+</section>
+
+<section class="card">
+
+<h2>📈 Live Monitoring</h2>
+
+<canvas id="liveChart"></canvas>
+
+</section>
+
+<section class="card">
+
+<h2>🌐 Subnet Calculator Pro</h2>
+
+<input
+id="ipInput"
+placeholder="192.168.1.10">
+
+<input
+id="prefixInput"
+placeholder="24">
+
+<button onclick="calculateSubnet()">
+Hitung
+</button>
+
+<div
+id="subnetResult"
+class="result">
+</div>
+
+</section>
+
+<section class="grid">
+
+<div class="card">
+
+<h2>📍 IP Class</h2>
+
+<input id="classInput">
+
+<button onclick="checkIPClass()">
+
+Check
+
+</button>
+
+<div id="classResult" class="result"></div>
+
+</div>
+
+<div class="card">
+
+<h2>📐 CIDR</h2>
+
+<input id="cidrInput">
+
+<button onclick="convertCIDR()">
+
+Convert
+
+</button>
+
+<div id="cidrResult" class="result"></div>
+
+</div>
+
+<div class="card">
+
+<h2>💻 Binary</h2>
+
+<input id="binaryInput">
+
+<button onclick="convertBinary()">
+
+Convert
+
+</button>
+
+<div id="binaryResult" class="result"></div>
+
+</div>
+
+</section>
+
+<section class="grid">
+
+<div class="card">
+
+<h2>🔑 Password Generator</h2>
+
+<button onclick="generatePassword()">
+
+Generate
+
+</button>
+
+<div id="passwordResult" class="result"></div>
+
+</div>
+
+<div class="card">
+
+<h2>🔎 Port Checker</h2>
+
+<input id="portInput">
+
+<button onclick="checkPort()">
+
+Check
+
+</button>
+
+<div id="portResult" class="result"></div>
+
+</div>
+
+<div class="card">
+
+<h2>📡 Ping</h2>
+
+<input id="pingInput">
+
+<button onclick="pingHost()">
+
+Ping
+
+</button>
+
+<div id="pingResult" class="result"></div>
+
+</div>
+
+</section>
+
+<section class="grid">
+
+<div class="card">
+
+<h2>🌍 DNS Lookup</h2>
+
+<input id="dnsInput">
+
+<button onclick="dnsLookup()">
+
+Lookup
+
+</button>
+
+<div id="dnsResult" class="result"></div>
+
+</div>
+
+<div class="card">
+
+<h2>🖥 Network Scanner</h2>
+
+<button onclick="scanNetwork()">
+
+Scan
+
+</button>
+
+<div id="scanResult" class="result"></div>
+
+</div>
+
+</section>
+
+<section class="card">
+
+<h2>💻 Linux Terminal</h2>
+
+<div id="terminal"></div>
+
+<input
+id="terminal-input"
+placeholder="help">
+
+</section>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="script.js"></script>
+
+</body>
+</html>
 
 <h3 id="welcomeName">
 Loading...
@@ -347,6 +585,10 @@ SMK NEGERI 1 ADIWERNA
 
 <script src="script.js"></script>
 
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="script.js"></script>
+
 </body>
 
 </html>
+

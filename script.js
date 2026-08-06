@@ -1152,3 +1152,89 @@ a.click();
 
 console.log("TNOS V11 Ultimate Loaded Successfully");
 
+
+
+// ======================================
+// TNOS V8 ULTIMATE FINAL
+// PART 6
+// FINISHING
+// ======================================
+
+// ===== STATUS SERVER =====
+
+function updateServerStatus(){
+
+const status=document.getElementById("serverStatus");
+
+if(!status) return;
+
+const online=Math.random()>0.1;
+
+status.innerHTML=online?"🟢 ONLINE":"🔴 OFFLINE";
+
+status.style.color=online?"#00ff66":"#ff4444";
+
+}
+
+setInterval(updateServerStatus,3000);
+updateServerStatus();
+
+// ===== RANDOM TRAFFIC =====
+
+function updateTraffic(){
+
+const up=document.getElementById("uploadSpeed");
+const down=document.getElementById("downloadSpeed");
+
+if(up) up.innerHTML=random(10,120)+" Mbps";
+
+if(down) down.innerHTML=random(20,300)+" Mbps";
+
+}
+
+setInterval(updateTraffic,2000);
+updateTraffic();
+
+// ===== COPY RESULT =====
+
+function copyResult(id){
+
+const el=document.getElementById(id);
+
+if(!el) return;
+
+navigator.clipboard.writeText(el.innerText);
+
+toast("📋 Berhasil disalin");
+
+}
+
+// ===== FULLSCREEN =====
+
+function fullscreen(){
+
+if(!document.fullscreenElement){
+
+document.documentElement.requestFullscreen();
+
+}else{
+
+document.exitFullscreen();
+
+}
+
+}
+
+// ===== AUTO REFRESH DASHBOARD =====
+
+setInterval(()=>{
+
+updateMonitor();
+updateOnline();
+updateTraffic();
+
+},5000);
+
+console.log("🚀 TNOS V8 Ultimate Ready");
+
+
