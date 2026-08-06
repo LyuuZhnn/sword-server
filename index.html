@@ -4,232 +4,130 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>TJKT Network Control Center</title>
+<title>TNOS V5 - TJKT Network Operating System</title>
 
 <link rel="stylesheet" href="style.css">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
 </head>
 
 <body>
 
-<!-- ================= LOADER ================= -->
-
-<div id="loader">
-
-<h1>⚡ TJKT NETWORK</h1>
-
-<h2>CONTROL CENTER</h2>
-
-<p id="loading-text">
-Initializing Server...
-</p>
-
-<div class="progress">
-<div class="bar"></div>
+<div class="loading">
+    <h1>TNOS V5</h1>
+    <p>Loading Network Control Center...</p>
 </div>
-
-</div>
-
-<!-- ================= WEBSITE ================= -->
-
-<div id="main">
 
 <header class="navbar">
 
-<div>
-
-<h1>⚡ TJKT NETWORK CONTROL CENTER</h1>
-
-<p class="subtitle">
-Network • Linux • Security • Monitoring
-</p>
-
+<div class="logo">
+<i class="fa-solid fa-server"></i>
+<span>TNOS V5</span>
 </div>
 
-<div class="admin">
+<nav>
 
-🟢 SERVER ONLINE
+<a href="#dashboard"><i class="fa-solid fa-house"></i> Dashboard</a>
 
-<br>
+<a href="#monitor"><i class="fa-solid fa-chart-line"></i> Monitor</a>
 
-👤 HANIF XI TJKT 2
+<a href="#tools"><i class="fa-solid fa-network-wired"></i> Tools</a>
 
-<br>
+<a href="#linux"><i class="fa-brands fa-linux"></i> Linux</a>
 
-<span id="clock">00:00:00 WIB</span>
+<a href="#security"><i class="fa-solid fa-shield-halved"></i> Security</a>
 
-</div>
+</nav>
+
+<div id="clock">00:00:00</div>
 
 </header>
 
 <section class="hero">
 
-<div class="glass hero-card">
+<h1>TJKT NETWORK OPERATING SYSTEM</h1>
 
-<h2>WELCOME TO TJKT NETWORK SERVER</h2>
+<p>Cyber Dashboard • Network Tools • Linux • Security</p>
 
-<p>
-Dashboard monitoring server, materi jaringan,
-Linux, keamanan jaringan dan administrasi
-dalam satu tampilan modern.
-</p>
+<button class="start-btn">
+Masuk Dashboard
+</button>
 
-<a class="status">
-🟢 ALL SYSTEM NORMAL
-</a>
+</section>
+
+<section id="dashboard" class="cards">
+
+<div class="card">
+<i class="fa-solid fa-server"></i>
+<h3>Server</h3>
+<p id="server-status">ONLINE</p>
+</div>
+
+<div class="card">
+<i class="fa-solid fa-wifi"></i>
+<h3>Internet</h3>
+<p>CONNECTED</p>
+</div>
+
+<div class="card">
+<i class="fa-solid fa-network-wired"></i>
+<h3>Router</h3>
+<p>ACTIVE</p>
+</div>
+
+<div class="card">
+<i class="fa-solid fa-memory"></i>
+<h3>RAM</h3>
+<p id="ram">37%</p>
+</div>
+
+<div class="card">
+<i class="fa-solid fa-microchip"></i>
+<h3>CPU</h3>
+<p id="cpu">24%</p>
+</div>
+
+<div class="card">
+<i class="fa-solid fa-gauge-high"></i>
+<h3>Ping</h3>
+<p id="ping">8 ms</p>
+</div>
+
+</section>
+
+<section id="tools" class="tools">
+
+<h2>Network Tools</h2>
+
+<div class="tool-grid">
+
+<button>Subnet Calculator</button>
+
+<button>CIDR Calculator</button>
+
+<button>VLSM Calculator</button>
+
+<button>IP Class Detector</button>
+
+<button>Binary Converter</button>
+
+<button>MAC Generator</button>
 
 </div>
 
 </section>
 
-<section class="dashboard">
+<section id="linux" class="terminal">
 
-<div class="glass card">
-<h3>🖥 CPU</h3>
-<h1 id="cpu">72%</h1>
-<div class="line"></div>
+<h2>Linux Terminal</h2>
+
+<div class="terminal-box">
+
+<div class="output">
+TNOS@linux:~$
 </div>
 
-<div class="glass card">
-<h3>💾 RAM</h3>
-<h1 id="ram">63%</h1>
-<div class="line"></div>
-</div>
-
-<div class="glass card">
-<h3>📦 STORAGE</h3>
-<h1 id="storage">49%</h1>
-<div class="line"></div>
-</div>
-
-<div class="glass card">
-<h3>📡 PING</h3>
-<h1 id="ping">18 ms</h1>
-<div class="line"></div>
-</div>
-
-</section>
-<!-- ================= STATISTICS ================= -->
-
-<section class="stats">
-
-<div class="glass stat">
-<h3>👥 CLIENTS</h3>
-<h1 id="client">24</h1>
-</div>
-
-<div class="glass stat">
-<h3>📡 ACCESS POINT</h3>
-<h1 id="ap">5</h1>
-</div>
-
-<div class="glass stat">
-<h3>💻 DEVICES</h3>
-<h1 id="device">18</h1>
-</div>
-
-<div class="glass stat">
-<h3>⚙ SERVICES</h3>
-<h1 id="service">12</h1>
-</div>
-
-</section>
-
-<!-- ================= NETWORK TOPOLOGY ================= -->
-
-<section class="glass topology">
-
-<h2>🌐 NETWORK TOPOLOGY</h2>
-
-<pre>
-
-                    ☁ INTERNET
-                        │
-                 🛡 FIREWALL
-                        │
-                  🖥 MAIN SERVER
-             ┌──────────┼──────────┐
-          📡 ACCESS     💻 PC      🖨 PRINTER
-             │
-      ┌──────┼──────┐
-     📱 HP   💻 Laptop   📟 Switch
-
-</pre>
-
-</section>
-
-<!-- ================= LIVE TRAFFIC ================= -->
-
-<section class="glass traffic">
-
-<h2>📈 LIVE TRAFFIC</h2>
-
-<div class="traffic-box">
-
-<div>
-
-<h3>Upload</h3>
-
-<div class="progress-bar">
-
-<div class="upload-fill"></div>
-
-</div>
-
-</div>
-
-<div>
-
-<h3>Download</h3>
-
-<div class="progress-bar">
-
-<div class="download-fill"></div>
-
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-<!-- ================= TERMINAL ================= -->
-
-<section class="glass terminal">
-
-<h2>💻 TERMINAL MONITOR</h2>
-
-<pre id="terminal">
-
-root@tjkt-server:~#
-
-</pre>
-
-</section>
-
-<!-- ================= NOTIFICATION ================= -->
-
-<div id="notify">
-
-🟢 SERVER ONLINE
-
-</div>
-
-<footer>
-
-<h2>TJKT NETWORK CONTROL CENTER</h2>
-
-<p>Developed by HANIF XI TJKT 2</p>
-
-<p>Version 4.0 Ultimate</p>
-
-<p>© 2026</p>
-
-</footer>
-
-</div>
-
-<script src="script.js"></script>
-
-</body>
-</html>
+<input
+type
