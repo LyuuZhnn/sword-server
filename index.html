@@ -120,19 +120,21 @@ ONLINE
 
 </section>
 
-<section id="tools">
-
-<h2>🌐 Network Tools</h2>
-
-<div class="tool-grid">
-
 <div class="tool-card">
 
-<h3>Subnet Calculator</h3>
+<h3>🌐 Subnet Calculator Pro</h3>
 
-<input id="ip" type="text" placeholder="192.168.1.10">
+<input
+type="text"
+id="ip"
+placeholder="192.168.1.25">
 
-<input id="cidr" type="number" placeholder="24">
+<input
+type="number"
+id="cidr"
+placeholder="24"
+min="1"
+max="32">
 
 <button onclick="hitungSubnet()">
 Hitung
@@ -140,12 +142,13 @@ Hitung
 
 <div id="hasilSubnet"></div>
 
+</div>
+
 <div class="tool-card">
 
 <h3>📍 IP Class Checker</h3>
 
 <input
-type="text"
 id="ipClassInput"
 placeholder="192.168.1.1">
 
@@ -157,51 +160,110 @@ Check
 
 </div>
 
-</div>
-
 <div class="tool-card">
 
-<h3>Password Generator</h3>
+<h3>📐 CIDR Converter</h3>
 
-<button onclick="generatePassword()">
-Generate
+<input
+id="cidrInput"
+placeholder="/24">
+
+<button onclick="convertCIDR()">
+Convert
 </button>
 
-<p id="passwordResult"></p>
+<div id="cidrResult"></div>
 
 </div>
 
 <div class="tool-card">
 
-<h3>Binary Converter</h3>
+<h3>🔢 Binary Converter</h3>
 
-<input id="binaryInput" type="text" placeholder="255">
+<input
+id="binaryInput"
+placeholder="255">
 
 <button onclick="convertBinary()">
 Convert
 </button>
 
-<p id="binaryResult"></p>
+<div id="binaryResult"></div>
 
 </div>
 
 <div class="tool-card">
 
-<h3>Port Checker</h3>
+<h3>🔑 Password Generator</h3>
 
-<input id="portInput" type="number" placeholder="80">
+<button onclick="generatePassword()">
+Generate
+</button>
+
+<div id="passwordResult"></div>
+
+</div>
+
+<div class="tool-card">
+
+<h3>🔍 Port Checker</h3>
+
+<input
+id="portInput"
+placeholder="80">
 
 <button onclick="cekPort()">
 Check
 </button>
 
-<p id="portResult"></p>
+<div id="portResult"></div>
 
 </div>
 
+<div class="tool-card">
+
+<h3>📡 Ping Simulator</h3>
+
+<input
+id="pingHost"
+placeholder="google.com">
+
+<button onclick="pingHost()">
+Ping
+</button>
+
+<div id="pingResult"></div>
+
 </div>
 
-</section>
+<div class="tool-card">
+
+<h3>🌍 DNS Lookup</h3>
+
+<input
+id="dnsInput"
+placeholder="google.com">
+
+<button onclick="dnsLookup()">
+Lookup
+</button>
+
+<div id="dnsResult"></div>
+
+</div>
+
+<div class="tool-card">
+
+<h3>🖥️ Network Scanner</h3>
+
+<button onclick="scanNetwork()">
+Scan
+
+</button>
+
+<div id="scanResult"></div>
+
+</div>
 
 <section id="terminal">
 

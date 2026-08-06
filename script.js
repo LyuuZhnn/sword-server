@@ -551,3 +551,94 @@ Type : ${jenis}
 `;
 
 }
+
+// ===== SUBNET CALCULATOR PRO =====
+
+function hitungSubnet(){
+
+const ip=document.getElementById("ip").value.trim();
+const prefix=parseInt(document.getElementById("cidr").value);
+
+const hasil=document.getElementById("hasilSubnet");
+
+if(!ip || isNaN(prefix) || prefix<1 || prefix>32){
+
+hasil.innerHTML="❌ IP atau Prefix tidak valid";
+return;
+
+}
+
+const p=ip.split(".").map(Number);
+
+if(p.length!==4 || p.some(n=>isNaN(n)||n<0||n>255)){
+
+hasil.innerHTML="❌ Format IP salah";
+return;
+
+}
+
+const ipNum=((p[0]<<24)>>>0)+((p[1]<<16)>>>0)+((p[2]<<8)>>>0)+p[3];
+
+const mask=(0xffffffff<<(32-prefix))>>>0;
+
+const network=(ipNum & mask)>>>0;
+
+const broadcast=(network | (~mask>>>0))>>>0;
+
+function toIP(num){
+
+return[
+(num>>>24)&255,
+(num>>>16)&255,
+(num>>>8)&255,
+num&255
+].join(".");
+
+}
+
+const first=(prefix>=31)?network:network+1;
+const last=(prefix>=31)?broadcast:broadcast-1;
+
+const total=Math.pow(2,32-prefix);
+
+const usable=(prefix>=31)?0:total-2;
+
+let kelas="";
+
+if(p[0]>=1 && p[0]<=126) kelas="A";
+else if(p[0]>=128 && p[0]<=191) kelas="B";
+else if(p[0]>=192 && p[0]<=223) kelas="C";
+else if(p[0]>=224 && p[0]<=239) kelas="D";
+else kelas="E";
+
+let jenis="Public";
+
+if(
+p[0]==10 ||
+(p[0]==172 && p[1]>=16 && p[1]<=31) ||
+(p[0]==192 && p[1]==168)
+){
+jenis="Private";
+}
+
+const wildcard=(~mask)>>>0;
+
+hasil.innerHTML=`
+<b>📍 IP Address :</b> ${ip}<br>
+<b>📌 Prefix :</b> /${prefix}<br>
+<b>🎭 Subnet Mask :</b> ${toIP(mask)}<br>
+<b>🃏 Wildcard :</b> ${toIP(wildcard)}<hr>
+
+<b>🌐 Network :</b> ${toIP(network)}<br>
+<b>📡 Broadcast :</b> ${toIP(broadcast)}<br>
+<b>✅ First Host :</b> ${toIP(first)}<br>
+<b>🚀 Last Host :</b> ${toIP(last)}<hr>
+
+<b>👥 Total Address :</b> ${total}<br>
+<b>💻 Usable Host :</b> ${usable}<hr>
+
+<b>🏷️ Class :</b> ${kelas}<br>
+<b>🌍 Type :</b> ${jenis}
+`;
+
+}
