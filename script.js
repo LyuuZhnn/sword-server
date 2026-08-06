@@ -1,45 +1,50 @@
-// ===== JAM REALTIME =====
+// ===== LOADING =====
+window.onload = () => {
+    setTimeout(() => {
+        const loading = document.querySelector(".loading");
+        if (loading) loading.style.display = "none";
+    }, 1800);
+};
+
+// ===== CLOCK =====
 function updateClock() {
     const now = new Date();
-
-    document.getElementById("clock").innerHTML =
-        now.toLocaleTimeString("id-ID");
+    const clock = document.getElementById("clock");
+    if (clock) {
+        clock.innerHTML = now.toLocaleTimeString("id-ID");
+    }
 }
-
 setInterval(updateClock,1000);
 updateClock();
 
-
-// ===== LOADING =====
-window.onload = () => {
-    setTimeout(()=>{
-        document.querySelector(".loading").style.display="none";
-    },1800);
-};
-
-
-// ===== STATUS RANDOM =====
-function random(min,max){
+// ===== RANDOM STATUS =====
+function rand(min,max){
     return Math.floor(Math.random()*(max-min+1))+min;
 }
 
 setInterval(()=>{
 
-document.getElementById("cpu").innerHTML =
-random(15,65)+" %";
+document.getElementById("cpu").innerHTML=rand(10,70)+" %";
+document.getElementById("ram").innerHTML=rand(25,80)+" %";
+document.getElementById("ping").innerHTML=rand(3,20)+" ms";
 
-document.getElementById("ram").innerHTML =
-random(30,80)+" %";
+const server=document.getElementById("server-status");
 
-document.getElementById("ping").innerHTML =
-random(3,25)+" ms";
+if(rand(1,10)<=9){
+server.innerHTML="🟢 ONLINE";
+server.style.color="#00ff99";
+}else{
+server.innerHTML="🟡 BUSY";
+server.style.color="orange";
+}
 
 },2000);
-
 
 // ===== TERMINAL =====
 const input=document.getElementById("terminal-input");
 const output=document.querySelector(".output");
+
+if(input && output){
 
 input.addEventListener("keydown",function(e){
 
@@ -47,13 +52,12 @@ if(e.key==="Enter"){
 
 let cmd=input.value.trim().toLowerCase();
 
-output.innerHTML += "<br>TNOS@linux:~$ "+cmd;
+output.innerHTML+="<br>TNOS@linux:~$ "+cmd;
 
 switch(cmd){
 
 case "help":
-
-output.innerHTML += `
+output.innerHTML+=`
 <br><br>
 help<br>
 clear<br>
@@ -63,133 +67,58 @@ ping<br>
 ifconfig<br>
 neofetch
 `;
-
 break;
 
 case "clear":
-
 output.innerHTML="";
-
 break;
 
 case "date":
-
-output.innerHTML +=
-"<br>"+new Date();
-
+output.innerHTML+="<br>"+new Date();
 break;
 
 case "whoami":
-
-output.innerHTML +=
-"<br>administrator";
-
+output.innerHTML+="<br>administrator";
 break;
 
 case "ping":
-
-output.innerHTML +=
-"<br>Pinging google.com...";
-setTimeout(()=>{
-output.innerHTML +=
-"<br>Reply : time=8ms";
-},700);
-
+output.innerHTML+="<br>Reply from google.com : time="+rand(3,15)+" ms";
 break;
 
 case "ifconfig":
-
-output.innerHTML += `
+output.innerHTML+=`
 <br>
-eth0<br>
-inet 192.168.1.10<br>
-mask 255.255.255.0
+eth0
+<br>IP : 192.168.1.10
+<br>Mask : 255.255.255.0
 `;
-
 break;
 
 case "neofetch":
-
-output.innerHTML += `
+output.innerHTML+=`
 <br>
-====================<br>
-TNOS V5 Ultimate<br>
-Kernel : Linux 6.x<br>
-Shell : bash<br>
-CPU : Intel Xeon<br>
-RAM : 16 GB<br>
-Status : Online
+TNOS V6 Ultimate
+<br>User : MUSYAFFA HANIF SUNNI
+<br>Kelas : XI TJKT 2
+<br>Kernel : Linux
 `;
-
 break;
 
 default:
-
-output.innerHTML +=
-"<br>Command not found.";
+output.innerHTML+="<br>Command not found.";
 
 }
 
 output.scrollTop=output.scrollHeight;
-
 input.value="";
 
 }
 
 });
 
-
-// ===== CARD EFFECT =====
-document.querySelectorAll(".card").forEach(card=>{
-
-card.addEventListener("mouseenter",()=>{
-
-card.style.transform="translateY(-12px) scale(1.03)";
-
-});
-
-card.addEventListener("mouseleave",()=>{
-
-card.style.transform="translateY(0) scale(1)";
-
-});
-
-});
-
-
-// ===== TOOL BUTTON =====
-document.querySelectorAll(".tool-grid button").forEach(btn=>{
-
-btn.onclick=()=>{
-
-alert(btn.innerText+" akan hadir di update berikutnya 🚀");
-
-};
-
-});
-
-
-// ===== SERVER STATUS =====
-setInterval(()=>{
-
-let s=document.getElementById("server-status");
-
-if(Math.random()>0.1){
-
-s.innerHTML="🟢 ONLINE";
-s.style.color="#00ff99";
-
-}else{
-
-s.innerHTML="🟡 BUSY";
-s.style.color="orange";
-
 }
 
-},4000);
-
-console.log("TNOS V5 Ultimate Loaded 🚀");
-
+// ===== SUBNET CALCULATOR =====
 function hitungSubnet(){
 
 let ip=document.getElementById("ip").value.trim();
@@ -214,7 +143,6 @@ let ipNum=((p[0]<<24)>>>0)+((p[1]<<16)>>>0)+((p[2]<<8)>>>0)+p[3];
 let mask=(cidr===0)?0:(0xffffffff<<(32-cidr))>>>0;
 
 let network=ipNum & mask;
-
 let broadcast=(network | (~mask>>>0))>>>0;
 
 function toIP(num){
@@ -226,8 +154,8 @@ num&255
 ].join(".");
 }
 
-let first=(cidr==32)?network:network+1;
-let last=(cidr==32)?network:broadcast-1;
+let first=(cidr>=31)?network:network+1;
+let last=(cidr>=31)?broadcast:broadcast-1;
 
 let total=Math.pow(2,32-cidr);
 let usable=(cidr>=31)?0:total-2;

@@ -4,123 +4,115 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>TNOS V5 - TJKT Network Operating System</title>
+<title>TNOS V6 Ultimate</title>
 
 <link rel="stylesheet" href="style.css">
 
 <link rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
 </head>
 
 <body>
 
 <div class="loading">
-    <h1>TNOS V5</h1>
-    <p>Loading Network Control Center...</p>
+
+<h1>TNOS V6</h1>
+
+<p>Loading Dashboard...</p>
+
 </div>
 
 <header class="navbar">
 
 <div class="logo">
-<i class="fa-solid fa-server"></i>
+
+<i class="fa-solid fa-network-wired"></i>
+
 <div>
-<h2>TNOS V5</h2>
-<p class="owner">
-MUSYAFFA HANIF SUNNI<br>
-XI TJKT 2
-</p>
+
+<h2>TNOS V6 Ultimate</h2>
+
+<p>MUSYAFFA HANIF SUNNI</p>
+
+<small>XI TJKT 2</small>
+
 </div>
+
 </div>
 
 <nav>
 
-<a href="#dashboard"><i class="fa-solid fa-house"></i> Dashboard</a>
+<a href="#dashboard">Dashboard</a>
 
-<a href="#monitor"><i class="fa-solid fa-chart-line"></i> Monitor</a>
+<a href="#tools">Tools</a>
 
-<a href="#tools"><i class="fa-solid fa-network-wired"></i> Tools</a>
+<a href="#terminal">Terminal</a>
 
-<a href="#linux"><i class="fa-brands fa-linux"></i> Linux</a>
-
-<a href="#security"><i class="fa-solid fa-shield-halved"></i> Security</a>
+<a href="#about">About</a>
 
 </nav>
 
-<div class="profile-box">
-
 <div id="clock">00:00:00</div>
-
-<div class="status">
-🟢 ONLINE
-</div>
-
-</div>
 
 </header>
 
-<section class="hero">
+<section id="dashboard" class="hero">
 
-<h1>TJKT NETWORK OPERATING SYSTEM</h1>
+<h1>TJKT NETWORK CONTROL CENTER</h1>
 
-<h3 class="welcome">
-WELCOME,
-MUSYAFFA HANIF SUNNI
-</h3>
+<h2>WELCOME</h2>
 
-<p class="kelas">
-SMK NEGERI 1 ADIWERNA • XI TJKT 2
-</p>
+<h3>MUSYAFFA HANIF SUNNI</h3>
 
-<p>
-Cyber Dashboard • Network Tools • Linux • Security
-</p>
+<p>SMK NEGERI 1 ADIWERNA • XI TJKT 2</p>
 
 <button class="start-btn">
-Masuk Dashboard
+Open Dashboard
 </button>
 
 </section>
-<p>Cyber Dashboard • Network Tools • Linux • Security</p>
 
-</section>
-
-<section id="dashboard" class="cards">
+<section class="cards">
 
 <div class="card">
+
 <i class="fa-solid fa-server"></i>
-<h3>Server</h3>
+
+<h3>Server Status</h3>
+
 <p id="server-status">ONLINE</p>
+
 </div>
 
 <div class="card">
-<i class="fa-solid fa-wifi"></i>
-<h3>Internet</h3>
-<p>CONNECTED</p>
-</div>
 
-<div class="card">
-<i class="fa-solid fa-network-wired"></i>
-<h3>Router</h3>
-<p>ACTIVE</p>
-</div>
-
-<div class="card">
 <i class="fa-solid fa-memory"></i>
-<h3>RAM</h3>
-<p id="ram">37%</p>
+
+<h3>RAM Usage</h3>
+
+<p id="ram">0%</p>
+
 </div>
 
 <div class="card">
+
 <i class="fa-solid fa-microchip"></i>
-<h3>CPU</h3>
-<p id="cpu">24%</p>
+
+<h3>CPU Usage</h3>
+
+<p id="cpu">0%</p>
+
 </div>
 
 <div class="card">
-<i class="fa-solid fa-gauge-high"></i>
+
+<i class="fa-solid fa-signal"></i>
+
 <h3>Ping</h3>
-<p id="ping">8 ms</p>
+
+<p id="ping">0 ms</p>
+
 </div>
 
 </section>
@@ -131,21 +123,19 @@ Masuk Dashboard
 
 <div class="tool-grid">
 
-<div class="card subnet-card">
+<div class="tool-card">
 
 <h3>🧮 Subnet Calculator</h3>
 
 <input
 type="text"
 id="ip"
-placeholder="Contoh: 192.168.1.10">
+placeholder="192.168.1.10">
 
 <input
 type="number"
 id="cidr"
-placeholder="CIDR (24)"
-min="1"
-max="32">
+placeholder="24">
 
 <button onclick="hitungSubnet()">
 Hitung
@@ -155,9 +145,51 @@ Hitung
 
 </div>
 
+<div class="tool-card">
+
+<h3>🌐 CIDR Calculator</h3>
+
+<p>Coming Soon</p>
+
 </div>
 
-<section id="linux" class="terminal">
+<div class="tool-card">
+
+<h3>📡 VLSM Calculator</h3>
+
+<p>Coming Soon</p>
+
+</div>
+
+<div class="tool-card">
+
+<h3>🔎 IP Class Detector</h3>
+
+<p>Coming Soon</p>
+
+</div>
+
+<div class="tool-card">
+
+<h3>🔐 Password Generator</h3>
+
+<p>Coming Soon</p>
+
+</div>
+
+<div class="tool-card">
+
+<h3>⚡ Binary Converter</h3>
+
+<p>Coming Soon</p>
+
+</div>
+
+</div>
+
+</section>
+
+<section id="terminal" class="terminal">
 
 <h2>Linux Terminal</h2>
 
@@ -175,6 +207,34 @@ placeholder="Ketik command...">
 </div>
 
 </section>
+
+<section id="about" class="about">
+
+<h2>About</h2>
+
+<p>
+
+Developed by<br>
+
+<b>MUSYAFFA HANIF SUNNI</b><br>
+
+XI TJKT 2<br>
+
+SMK NEGERI 1 ADIWERNA
+
+</p>
+
+</section>
+
+<footer>
+
+<p>
+
+© 2026 TNOS V6 Ultimate
+
+</p>
+
+</footer>
 
 <script src="script.js"></script>
 
