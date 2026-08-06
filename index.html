@@ -1,121 +1,84 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>TNOS V6 Ultimate</title>
+<title>TNOS V8 Ultimate</title>
 
 <link rel="stylesheet" href="style.css">
 
-<link rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 </head>
 
 <body>
 
-<script>
-
-if(!localStorage.getItem("tnos_username")){
-
-window.location.href="login.html";
-
-}
-
-</script>
-
 <div class="loading">
 
-<h1>TNOS V6</h1>
-
-<p>Loading Dashboard...</p>
-
-</div>
-
-<header class="navbar">
-
-<div class="logo">
-
-<i class="fa-solid fa-network-wired"></i>
-
-<div>
-
-<h2>TNOS V6 Ultimate</h2>
-
-<p>MUSYAFFA HANIF SUNNI</p>
-
-<small>XI TJKT 2</small>
+<h1>TNOS V8</h1>
+<p>Loading...</p>
 
 </div>
 
-</div>
+<div class="sidebar">
+<a href="#settings">⚙️ Settings</a>
 
-<nav>
+<h2>🛡️ TNOS</h2>
 
-<a href="#dashboard">Dashboard</a>
+<a href="#dashboard">🏠 Dashboard</a>
+<a href="#monitor">📊 Monitor</a>
+<a href="#tools">🌐 Tools</a>
+<a href="#terminal">💻 Terminal</a>
+<a href="#about">ℹ️ About</a>
 
-<a href="#tools">Tools</a>
-
-<a href="#terminal">Terminal</a>
-
-<a href="#about">About</a>
-
-<a href="#" onclick="logout()">
+<button onclick="logout()">
 🚪 Logout
-</a>
+</button>
 
-</nav>
+</div>
 
-<div id="clock">00:00:00</div>
-
-</header>
+<div class="main">
 
 <section id="dashboard" class="hero">
 
-<h1>TJKT NETWORK CONTROL CENTER</h1>
+<h1>TNOS V8 ULTIMATE</h1>
 
 <h2>WELCOME</h2>
 
-<h3 id="welcomeName">Loading...</h3>
+<h3 id="welcomeName">
+Loading...
+</h3>
 
-<p id="welcomeClass">Loading...</p>
+<p id="welcomeClass">
+Loading...
+</p>
 
-<p id="welcomeRole"></p>
+<p id="welcomeRole">
+Loading...
+</p>
 
-<button class="start-btn">
-Open Dashboard
-</button>
+<div id="clock">
+00:00:00
+</div>
 
 </section>
 
-<section class="cards">
+<section id="monitor">
+
+<h2>📊 Monitoring</h2>
+
+<div class="cards">
 
 <div class="card">
 
-<i class="fa-solid fa-server"></i>
-
-<h3>Server Status</h3>
-
-<p id="server-status">ONLINE</p>
-
-</div>
-
-<div class="card">
-
-<i class="fa-solid fa-memory"></i>
-
-<h3>RAM Usage</h3>
-
-<p id="ram">0%</p>
-
-</div>
-
-<div class="card">
-
-<i class="fa-solid fa-microchip"></i>
-
-<h3>CPU Usage</h3>
+<h3>CPU</h3>
 
 <p id="cpu">0%</p>
 
@@ -123,187 +86,33 @@ Open Dashboard
 
 <div class="card">
 
-<i class="fa-solid fa-signal"></i>
+<h3>RAM</h3>
 
-<h3>Ping</h3>
+<p id="ram">0%</p>
+
+</div>
+
+<div class="card">
+
+<h3>PING</h3>
 
 <p id="ping">0 ms</p>
 
 </div>
 
-</section>
+<div class="card">
 
-<section id="tools" class="tools">
+<h3>SERVER</h3>
 
-<h2>Network Tools</h2>
-
-<div class="tool-grid">
-
-<div class="tool-card">
-
-<h3>🧮 Subnet Calculator</h3>
-
-<input
-type="text"
-id="ip"
-placeholder="192.168.1.10">
-
-<input
-type="number"
-id="cidr"
-placeholder="24">
-
-<button onclick="hitungSubnet()">
-Hitung
-</button>
-
-<div id="hasilSubnet"></div>
-<div class="tool-card">
-
-<h3>🛰️ Network Scanner</h3>
-
-<input
-type="text"
-id="scanIP"
-placeholder="192.168.1.1">
-
-<button onclick="scanNetwork()">
-Scan
-</button>
-
-<div id="scanResult"></div>
-
-</div>
-
-<div class="tool-card">
-
-<h3>🔌 Port Checker</h3>
-
-<select id="portSelect">
-
-<option>20 FTP</option>
-<option>21 FTP</option>
-<option>22 SSH</option>
-<option>23 Telnet</option>
-<option>25 SMTP</option>
-<option>53 DNS</option>
-<option>80 HTTP</option>
-<option>110 POP3</option>
-<option>143 IMAP</option>
-<option>443 HTTPS</option>
-<option>3306 MySQL</option>
-<option>3389 RDP</option>
-
-</select>
-
-<button onclick="cekPort()">
-Check
-</button>
-
-<div id="portResult"></div>
+<p id="server-status">
+ONLINE
+</p>
 
 </div>
 
 </div>
 
-<div class="tool-card">
-
-<h3>🌐 CIDR Calculator</h3>
-
-<input
-type="number"
-id="cidrOnly"
-min="1"
-max="32"
-placeholder="Masukkan CIDR">
-
-<button onclick="hitungCIDR()">
-Hitung
-</button>
-
-<div id="hasilCIDR"></div>
-
-</div>
-
-<div class="tool-card">
-
-<h3>📡 VLSM Calculator</h3>
-
-<p>Coming Soon</p>
-
-</div>
-
-<div class="tool-card">
-
-<h3>🔎 IP Class Detector</h3>
-
-<input
-type="text"
-id="ipClass"
-placeholder="192.168.1.1">
-
-<button onclick="cekIPClass()">
-Deteksi
-</button>
-
-<div id="hasilClass"></div>
-
-</div>
-
-<div class="tool-card">
-
-<h3>🔐 Password Generator</h3>
-
-<input
-type="number"
-id="passLength"
-placeholder="Panjang Password"
-value="16"
-min="4"
-max="64">
-
-<button onclick="generatePassword()">
-Generate
-</button>
-
-<input
-type="text"
-id="generatedPassword"
-readonly
-placeholder="Password akan muncul di sini">
-
-<button onclick="copyPassword()">
-📋 Copy
-</button>
-
-</div>
-
-<div class="tool-card">
-
-<h3>⚡ Binary IP Converter</h3>
-
-<input
-type="text"
-id="binaryIP"
-placeholder="192.168.1.10">
-
-<button onclick="convertBinary()">
-Convert
-</button>
-
-<div id="binaryResult"></div>
-
-</div>
-
-</div>
-
-</section>
-
-<section class="tools">
-
-<h2>📊 Live Monitoring</h2>
-
-<div class="tool-card">
+<div class="chart-box">
 
 <canvas id="liveChart"></canvas>
 
@@ -311,36 +120,126 @@ Convert
 
 </section>
 
+<section id="tools">
+
+<h2>🌐 Network Tools</h2>
+
+<div class="tool-grid">
+
+<div class="tool-card">
+
+<h3>Subnet Calculator</h3>
+
+<input id="ip" type="text" placeholder="192.168.1.10">
+
+<input id="cidr" type="number" placeholder="24">
+
+<button onclick="hitungSubnet()">
+Hitung
+</button>
+
+<div id="hasilSubnet"></div>
+
+</div>
+
+<div class="tool-card">
+
+<h3>Password Generator</h3>
+
+<button onclick="generatePassword()">
+Generate
+</button>
+
+<p id="passwordResult"></p>
+
+</div>
+
+<div class="tool-card">
+
+<h3>Binary Converter</h3>
+
+<input id="binaryInput" type="text" placeholder="255">
+
+<button onclick="convertBinary()">
+Convert
+</button>
+
+<p id="binaryResult"></p>
+
+</div>
+
+<div class="tool-card">
+
+<h3>Port Checker</h3>
+
+<input id="portInput" type="number" placeholder="80">
+
+<button onclick="cekPort()">
+Check
+</button>
+
+<p id="portResult"></p>
+
+</div>
+
+</div>
+
+</section>
+
 <section id="terminal">
 
-<h2>Linux Terminal</h2>
+<h2>💻 Linux Terminal</h2>
 
 <div class="terminal-box">
 
 <div class="output">
+
 TNOS@linux:~$
+
 </div>
 
 <input
-type="text"
 id="terminal-input"
+type="text"
 placeholder="Ketik command...">
 
 </div>
 
 </section>
 
-<section id="about" class="about">
+<section id="settings">
+
+<h2>⚙️ Settings</h2>
+
+<button onclick="toggleTheme()">
+🌙 Dark / Light Mode
+</button>
+
+<button onclick="showInfo()">
+ℹ️ Informasi Sistem
+</button>
+
+<div id="systemInfo"></div>
+
+</section>
+
+<section id="about">
 
 <h2>About</h2>
 
 <p>
 
-Developed by<br>
+Developed by
 
-<b>MUSYAFFA HANIF SUNNI</b><br>
+<br><br>
 
-XI TJKT 2<br>
+<b>MUSYAFFA HANIF SUNNI</b>
+
+<br>
+
+XI TJKT 2
+
+<br>
 
 SMK NEGERI 1 ADIWERNA
 
@@ -350,16 +249,14 @@ SMK NEGERI 1 ADIWERNA
 
 <footer>
 
-<p>
-
-© 2026 TNOS V6 Ultimate
-
-</p>
+© 2026 TNOS V8 Ultimate
 
 </footer>
 
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</div>
+
 <script src="script.js"></script>
 
 </body>
+
 </html>
