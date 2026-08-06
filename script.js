@@ -18,6 +18,11 @@ window.location.href="login.html";
 // ===== WELCOME =====
 
 window.onload=function(){
+const loading=document.querySelector(".loading");
+
+if(loading){
+    loading.style.display="none";
+}
 
 const nama=document.getElementById("welcomeName");
 const cls=document.getElementById("welcomeClass");
