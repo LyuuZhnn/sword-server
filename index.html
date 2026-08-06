@@ -1,92 +1,233 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TJKT Network Server</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="style.css">
+<title>TJKT Network Control Center</title>
+
+<link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<header class="navbar">
-    <h1>⚡ TJKT NETWORK SERVER</h1>
+<!-- ================= LOADER ================= -->
 
-    <div class="admin">
-        👤 HANIF XI TJKT 2
-        <br>
-        <span id="clock">00:00:00</span>
-    </div>
+<div id="loader">
+
+<h1>⚡ TJKT NETWORK</h1>
+
+<h2>CONTROL CENTER</h2>
+
+<p id="loading-text">
+Initializing Server...
+</p>
+
+<div class="progress">
+<div class="bar"></div>
+</div>
+
+</div>
+
+<!-- ================= WEBSITE ================= -->
+
+<div id="main">
+
+<header class="navbar">
+
+<div>
+
+<h1>⚡ TJKT NETWORK CONTROL CENTER</h1>
+
+<p class="subtitle">
+Network • Linux • Security • Monitoring
+</p>
+
+</div>
+
+<div class="admin">
+
+🟢 SERVER ONLINE
+
+<br>
+
+👤 HANIF XI TJKT 2
+
+<br>
+
+<span id="clock">00:00:00 WIB</span>
+
+</div>
+
 </header>
 
 <section class="hero">
 
-    <h2>Dashboard</h2>
+<div class="glass hero-card">
 
-    <p>Selamat datang di TJKT Network Server</p>
+<h2>WELCOME TO TJKT NETWORK SERVER</h2>
+
+<p>
+Dashboard monitoring server, materi jaringan,
+Linux, keamanan jaringan dan administrasi
+dalam satu tampilan modern.
+</p>
+
+<a class="status">
+🟢 ALL SYSTEM NORMAL
+</a>
+
+</div>
 
 </section>
 
-<section class="cards">
+<section class="dashboard">
 
-<a href="network.html" class="card">
-🌐
-<h3>Network</h3>
-<p>Tools jaringan</p>
-</a>
+<div class="glass card">
+<h3>🖥 CPU</h3>
+<h1 id="cpu">72%</h1>
+<div class="line"></div>
+</div>
 
-<a href="materi.html" class="card">
-📚
-<h3>Materi</h3>
-<p>Materi TJKT</p>
-</a>
+<div class="glass card">
+<h3>💾 RAM</h3>
+<h1 id="ram">63%</h1>
+<div class="line"></div>
+</div>
 
-<a href="subnet.html" class="card">
-🧮
-<h3>Subnet</h3>
-<p>Kalkulator IP</p>
-</a>
+<div class="glass card">
+<h3>📦 STORAGE</h3>
+<h1 id="storage">49%</h1>
+<div class="line"></div>
+</div>
 
-<a href="monitor.html" class="card">
-📊
-<h3>Monitor</h3>
-<p>Status Server</p>
-</a>
-
-<a href="linux.html" class="card">
-🐧
-<h3>Linux</h3>
-<p>Linux Lab</p>
-</a>
-
-<a href="security.html" class="card">
-🔐
-<h3>Security</h3>
-<p>Cyber Security</p>
-</a>
-
-<a href="praktikum.html" class="card">
-🛠️
-<h3>Praktikum</h3>
-<p>Modul Praktik</p>
-</a>
-
-<a href="file.html" class="card">
-📁
-<h3>File Server</h3>
-<p>Download File</p>
-</a>
+<div class="glass card">
+<h3>📡 PING</h3>
+<h1 id="ping">18 ms</h1>
+<div class="line"></div>
+</div>
 
 </section>
+<!-- ================= STATISTICS ================= -->
+
+<section class="stats">
+
+<div class="glass stat">
+<h3>👥 CLIENTS</h3>
+<h1 id="client">24</h1>
+</div>
+
+<div class="glass stat">
+<h3>📡 ACCESS POINT</h3>
+<h1 id="ap">5</h1>
+</div>
+
+<div class="glass stat">
+<h3>💻 DEVICES</h3>
+<h1 id="device">18</h1>
+</div>
+
+<div class="glass stat">
+<h3>⚙ SERVICES</h3>
+<h1 id="service">12</h1>
+</div>
+
+</section>
+
+<!-- ================= NETWORK TOPOLOGY ================= -->
+
+<section class="glass topology">
+
+<h2>🌐 NETWORK TOPOLOGY</h2>
+
+<pre>
+
+                    ☁ INTERNET
+                        │
+                 🛡 FIREWALL
+                        │
+                  🖥 MAIN SERVER
+             ┌──────────┼──────────┐
+          📡 ACCESS     💻 PC      🖨 PRINTER
+             │
+      ┌──────┼──────┐
+     📱 HP   💻 Laptop   📟 Switch
+
+</pre>
+
+</section>
+
+<!-- ================= LIVE TRAFFIC ================= -->
+
+<section class="glass traffic">
+
+<h2>📈 LIVE TRAFFIC</h2>
+
+<div class="traffic-box">
+
+<div>
+
+<h3>Upload</h3>
+
+<div class="progress-bar">
+
+<div class="upload-fill"></div>
+
+</div>
+
+</div>
+
+<div>
+
+<h3>Download</h3>
+
+<div class="progress-bar">
+
+<div class="download-fill"></div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ================= TERMINAL ================= -->
+
+<section class="glass terminal">
+
+<h2>💻 TERMINAL MONITOR</h2>
+
+<pre id="terminal">
+
+root@tjkt-server:~#
+
+</pre>
+
+</section>
+
+<!-- ================= NOTIFICATION ================= -->
+
+<div id="notify">
+
+🟢 SERVER ONLINE
+
+</div>
 
 <footer>
 
-TJKT NETWORK SERVER © 2026<br>
+<h2>TJKT NETWORK CONTROL CENTER</h2>
 
-Created by <b>HANIF XI TJKT 2</b>
+<p>Developed by HANIF XI TJKT 2</p>
+
+<p>Version 4.0 Ultimate</p>
+
+<p>© 2026</p>
 
 </footer>
+
+</div>
 
 <script src="script.js"></script>
 
