@@ -1,7 +1,8 @@
 const username = localStorage.getItem("tnos_username");
 const kelas = localStorage.getItem("tnos_kelas");
-
+const role=localStorage.getItem("tnos_role");
 if(!username){
+
 window.location.href="login.html";
 }
 
@@ -28,6 +29,18 @@ const cls=document.getElementById("welcomeClass");
 if(nama) nama.innerHTML=username;
 
 if(cls) cls.innerHTML=kelas;
+const r=document.getElementById("welcomeRole");
+
+if(r){
+
+r.innerHTML=
+(role=="admin")
+?
+"🛡️ ADMIN"
+:
+"👤 USER";
+
+}
 
 };
 
