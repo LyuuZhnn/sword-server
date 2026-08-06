@@ -4,6 +4,9 @@
 // ===================================
 
 // ===== LOGIN CHECK =====
+window.onerror=function(msg,url,line,col,error){
+alert(msg+"\nBaris: "+line);
+};
 
 const username=localStorage.getItem("tnos_username");
 const kelas=localStorage.getItem("tnos_kelas");
@@ -18,11 +21,6 @@ window.location.href="login.html";
 // ===== WELCOME =====
 
 window.onload=function(){
-const loading=document.querySelector(".loading");
-
-if(loading){
-    loading.style.display="none";
-}
 
 const nama=document.getElementById("welcomeName");
 const cls=document.getElementById("welcomeClass");
