@@ -271,3 +271,70 @@ hasil.innerHTML=`
 `;
 
 }
+
+// ===== PASSWORD GENERATOR =====
+
+function generatePassword(){
+
+const chars="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*";
+
+const len=parseInt(document.getElementById("passLength").value);
+
+let pass="";
+
+for(let i=0;i<len;i++){
+
+pass+=chars.charAt(Math.floor(Math.random()*chars.length));
+
+}
+
+document.getElementById("generatedPassword").value=pass;
+
+}
+
+function copyPassword(){
+
+const input=document.getElementById("generatedPassword");
+
+input.select();
+
+document.execCommand("copy");
+
+alert("Password berhasil disalin!");
+
+}
+
+// ===== BINARY IP CONVERTER =====
+
+function convertBinary(){
+
+let ip=document.getElementById("binaryIP").value.trim();
+
+let hasil=document.getElementById("binaryResult");
+
+let part=ip.split(".");
+
+if(part.length!=4){
+
+hasil.innerHTML="IP tidak valid";
+
+return;
+
+}
+
+let binary=part.map(x=>{
+
+let n=parseInt(x);
+
+if(isNaN(n)||n<0||n>255)return "ERROR";
+
+return n.toString(2).padStart(8,"0");
+
+});
+
+hasil.innerHTML=`
+<b>Binary :</b><br>
+${binary.join(" . ")}
+`;
+
+}

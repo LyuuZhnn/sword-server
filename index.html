@@ -193,15 +193,44 @@ Deteksi
 
 <h3>🔐 Password Generator</h3>
 
-<p>Coming Soon</p>
+<input
+type="number"
+id="passLength"
+placeholder="Panjang Password"
+value="16"
+min="4"
+max="64">
+
+<button onclick="generatePassword()">
+Generate
+</button>
+
+<input
+type="text"
+id="generatedPassword"
+readonly
+placeholder="Password akan muncul di sini">
+
+<button onclick="copyPassword()">
+📋 Copy
+</button>
 
 </div>
 
 <div class="tool-card">
 
-<h3>⚡ Binary Converter</h3>
+<h3>⚡ Binary IP Converter</h3>
 
-<p>Coming Soon</p>
+<input
+type="text"
+id="binaryIP"
+placeholder="192.168.1.10">
+
+<button onclick="convertBinary()">
+Convert
+</button>
+
+<div id="binaryResult"></div>
 
 </div>
 
