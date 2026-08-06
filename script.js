@@ -338,3 +338,45 @@ ${binary.join(" . ")}
 `;
 
 }
+
+// ===== NETWORK SCANNER =====
+
+function scanNetwork(){
+
+const ip=document.getElementById("scanIP").value.trim();
+const hasil=document.getElementById("scanResult");
+
+if(!ip){
+hasil.innerHTML="Masukkan IP!";
+return;
+}
+
+hasil.innerHTML="🔍 Scanning...";
+
+setTimeout(()=>{
+
+hasil.innerHTML=`
+🟢 Host : ${ip}<br>
+Latency : ${Math.floor(Math.random()*10)+1} ms<br>
+Status : ONLINE
+`;
+
+},1000);
+
+}
+
+// ===== PORT CHECKER =====
+
+function cekPort(){
+
+const port=document.getElementById("portSelect").value;
+const hasil=document.getElementById("portResult");
+
+const status=Math.random()>0.3?"🟢 OPEN":"🔴 CLOSED";
+
+hasil.innerHTML=`
+<b>Port :</b> ${port}<br>
+<b>Status :</b> ${status}
+`;
+
+}

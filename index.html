@@ -142,6 +142,51 @@ Hitung
 </button>
 
 <div id="hasilSubnet"></div>
+<div class="tool-card">
+
+<h3>🛰️ Network Scanner</h3>
+
+<input
+type="text"
+id="scanIP"
+placeholder="192.168.1.1">
+
+<button onclick="scanNetwork()">
+Scan
+</button>
+
+<div id="scanResult"></div>
+
+</div>
+
+<div class="tool-card">
+
+<h3>🔌 Port Checker</h3>
+
+<select id="portSelect">
+
+<option>20 FTP</option>
+<option>21 FTP</option>
+<option>22 SSH</option>
+<option>23 Telnet</option>
+<option>25 SMTP</option>
+<option>53 DNS</option>
+<option>80 HTTP</option>
+<option>110 POP3</option>
+<option>143 IMAP</option>
+<option>443 HTTPS</option>
+<option>3306 MySQL</option>
+<option>3389 RDP</option>
+
+</select>
+
+<button onclick="cekPort()">
+Check
+</button>
+
+<div id="portResult"></div>
+
+</div>
 
 </div>
 
