@@ -157,18 +157,97 @@ window.location.href="login.html";
 
 function hitungSubnet(){
 
-const ip=document.getElementById("ip").value;
-const cidr=parseInt(document.getElementById("cidr").value);
+const ip=document.getElementById("ip").value.trim();
+const prefix=parseInt(document.getElementById("cidr").value);
 
-if(!ip || isNaN(cidr)){
-document.getElementById("hasilSubnet").innerHTML="Lengkapi data.";
+if(!ip || isNaN(prefix) || prefix<1 || prefix>32){
+
+document.getElementById("hasilSubnet").innerHTML="❌ Input tidak valid";
 return;
+
 }
 
-document.getElementById("hasilSubnet").innerHTML=
-`
-IP : ${ip}<br>
-CIDR : /${cidr}
+const part=ip.split(".").map(Number);
+
+if(part.length!==4 || part.some(x=>isNaN(x)||x<0||x>255)){
+
+document.getElementById("hasilSubnet").innerHTML="❌ IP Address salah";
+return;
+
+}
+
+const ipNum=((part[0]<<24)>>>0)+((part[1]<<16)>>>0)+((part[2]<<8)>>>0)+part[3];
+
+const mask=(0xffffffff<<(32-prefix))>>>0;
+
+const network=(ipNum & mask)>>>0;
+
+const broadcast=(network | (~mask>>>0))>>>0;
+
+function toIP(n){
+
+return[
+(n>>>24)&255,
+(n>>>16)&255,
+(n>>>8)&255,
+n&255
+].join(".");
+
+}
+
+const subnetMask=toIP(mask);
+
+const wildcard=toIP((~mask)>>>0);
+
+const firstHost=prefix==32?toIP(network):toIP(network+1);
+
+const lastHost=prefix>=31?toIP(broadcast):toIP(broadcast-1);
+
+const totalHost=Math.pow(2,32-prefix);
+
+const usable=prefix>=31?0:totalHost-2;
+
+let kelas="";
+
+if(part[0]<=126) kelas="A";
+else if(part[0]<=191) kelas="B";
+else if(part[0]<=223) kelas="C";
+else if(part[0]<=239) kelas="D";
+else kelas="E";
+
+let jenis="Public";
+
+if(
+part[0]==10 ||
+(part[0]==172 && part[1]>=16 && part[1]<=31) ||
+(part[0]==192 && part[1]==168)
+){
+jenis="Private";
+}
+
+document.getElementById("hasilSubnet").innerHTML=`
+
+<b>IP Address</b> : ${ip}<br>
+<b>Prefix</b> : /${prefix}<br>
+<b>Subnet Mask</b> : ${subnetMask}<br>
+<b>Wildcard</b> : ${wildcard}<br>
+<hr>
+
+<b>Network</b> : ${toIP(network)}<br>
+<b>Broadcast</b> : ${toIP(broadcast)}<br>
+<b>First Host</b> : ${firstHost}<br>
+<b>Last Host</b> : ${lastHost}<br>
+
+<hr>
+
+<b>Total Address</b> : ${totalHost}<br>
+<b>Usable Host</b> : ${usable}<br>
+
+<hr>
+
+<b>IP Class</b> : ${kelas}<br>
+<b>Type</b> : ${jenis}
+
 `;
 
 }
@@ -406,6 +485,69 @@ Status :
 Version :
 8.0 Ultimate
 
+`;
+
+}
+
+// ===== IP CLASS CHECKER =====
+
+function cekIPClass(){
+
+const ip=document.getElementById("ipClassInput").value.trim();
+
+const part=ip.split(".");
+
+if(part.length!==4){
+
+document.getElementById("ipClassResult").innerHTML="❌ IP tidak valid";
+
+return;
+
+}
+
+const a=parseInt(part[0]);
+
+let kelas="";
+
+if(a>=1 && a<=126){
+
+kelas="A";
+
+}else if(a>=128 && a<=191){
+
+kelas="B";
+
+}else if(a>=192 && a<=223){
+
+kelas="C";
+
+}else if(a>=224 && a<=239){
+
+kelas="D";
+
+}else{
+
+kelas="E";
+
+}
+
+let jenis="Public";
+
+if(
+a==10 ||
+(a==172 && parseInt(part[1])>=16 && parseInt(part[1])<=31) ||
+(a==192 && parseInt(part[1])==168)
+){
+
+jenis="Private";
+
+}
+
+document.getElementById("ipClassResult").innerHTML=
+
+`
+Class : ${kelas}<br>
+Type : ${jenis}
 `;
 
 }

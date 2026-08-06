@@ -269,3 +269,23 @@ background:#e9ecef;
 color:#111;
 
 }
+
+#hasilSubnet{
+
+margin-top:15px;
+padding:15px;
+background:#111827;
+border-radius:10px;
+line-height:1.8;
+text-align:left;
+font-size:14px;
+
+}
+
+#hasilSubnet hr{
+
+border:none;
+border-top:1px solid #444;
+margin:10px 0;
+
+}
