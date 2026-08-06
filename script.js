@@ -189,3 +189,54 @@ s.style.color="orange";
 },4000);
 
 console.log("TNOS V5 Ultimate Loaded 🚀");
+
+function hitungSubnet(){
+
+let ip=document.getElementById("ip").value;
+let cidr=parseInt(document.getElementById("cidr").value);
+
+let hasil=document.getElementById("hasilSubnet");
+
+if(!ip || isNaN(cidr)){
+hasil.innerHTML="Masukkan IP dan CIDR!";
+return;
+}
+
+let octet=ip.split(".");
+
+if(octet.length!=4){
+hasil.innerHTML="Format IP salah!";
+return;
+}
+
+let mask=[];
+
+let sisa=cidr;
+
+for(let i=0;i<4;i++){
+
+if(sisa>=8){
+mask.push(255);
+sisa-=8;
+}else if(sisa>0){
+mask.push(256-Math.pow(2,8-sisa));
+sisa=0;
+}else{
+mask.push(0);
+}
+
+}
+
+let totalHost=Math.pow(2,32-cidr);
+
+let usable=totalHost-2;
+
+hasil.innerHTML=`
+<b>IP Address :</b> ${ip}<br>
+<b>CIDR :</b> /${cidr}<br>
+<b>Subnet Mask :</b> ${mask.join(".")}<br>
+<b>Total Host :</b> ${totalHost}<br>
+<b>Host Usable :</b> ${usable}
+`;
+
+}

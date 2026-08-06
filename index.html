@@ -135,21 +135,31 @@ Masuk Dashboard
 
 <div class="tool-grid">
 
-<button>Subnet Calculator</button>
+<div class="card subnet-card">
 
-<button>CIDR Calculator</button>
+<h3>🧮 Subnet Calculator</h3>
 
-<button>VLSM Calculator</button>
+<input
+type="text"
+id="ip"
+placeholder="Contoh: 192.168.1.10">
 
-<button>IP Class Detector</button>
+<input
+type="number"
+id="cidr"
+placeholder="CIDR (24)"
+min="1"
+max="32">
 
-<button>Binary Converter</button>
+<button onclick="hitungSubnet()">
+Hitung
+</button>
 
-<button>MAC Generator</button>
+<div id="hasilSubnet"></div>
 
 </div>
 
-</section>
+</div>
 
 <section id="linux" class="terminal">
 
