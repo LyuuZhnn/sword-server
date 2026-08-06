@@ -266,3 +266,15 @@ padding:20px;
 }
 
 }
+
+#hasilCIDR,
+#hasilClass{
+
+margin-top:15px;
+padding:15px;
+border-radius:12px;
+background:rgba(0,0,0,.45);
+border:1px solid cyan;
+line-height:1.8;
+
+}

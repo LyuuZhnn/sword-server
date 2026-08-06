@@ -172,3 +172,102 @@ hasil.innerHTML=`
 `;
 
 }
+
+// ===== CIDR CALCULATOR =====
+
+function hitungCIDR(){
+
+let cidr=parseInt(document.getElementById("cidrOnly").value);
+
+let hasil=document.getElementById("hasilCIDR");
+
+if(isNaN(cidr)||cidr<1||cidr>32){
+
+hasil.innerHTML="CIDR tidak valid";
+
+return;
+
+}
+
+let host=Math.pow(2,32-cidr);
+
+let usable=(cidr>=31)?0:host-2;
+
+let mask=[];
+
+let sisa=cidr;
+
+for(let i=0;i<4;i++){
+
+if(sisa>=8){
+
+mask.push(255);
+
+sisa-=8;
+
+}else if(sisa>0){
+
+mask.push(256-Math.pow(2,8-sisa));
+
+sisa=0;
+
+}else{
+
+mask.push(0);
+
+}
+
+}
+
+hasil.innerHTML=`
+<b>CIDR :</b> /${cidr}<br>
+<b>Subnet Mask :</b> ${mask.join(".")}<br>
+<b>Total Host :</b> ${host}<br>
+<b>Usable Host :</b> ${usable}
+`;
+
+}
+
+// ===== IP CLASS =====
+
+function cekIPClass(){
+
+let ip=document.getElementById("ipClass").value.trim();
+
+let hasil=document.getElementById("hasilClass");
+
+let first=parseInt(ip.split(".")[0]);
+
+if(isNaN(first)){
+
+hasil.innerHTML="IP tidak valid";
+
+return;
+
+}
+
+let kelas="";
+
+let jenis="Public";
+
+if(first>=1&&first<=126) kelas="A";
+else if(first<=191) kelas="B";
+else if(first<=223) kelas="C";
+else if(first<=239) kelas="D";
+else kelas="E";
+
+if(
+first==10||
+(first==172&&parseInt(ip.split(".")[1])>=16&&parseInt(ip.split(".")[1])<=31)||
+(first==192&&parseInt(ip.split(".")[1])==168)
+){
+jenis="Private";
+}
+
+hasil.innerHTML=`
+<b>IP :</b> ${ip}<br>
+<b>Class :</b> ${kelas}<br>
+<b>Type :</b> ${jenis}
+`;
+
+}

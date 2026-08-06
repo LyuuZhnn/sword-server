@@ -149,7 +149,18 @@ Hitung
 
 <h3>🌐 CIDR Calculator</h3>
 
-<p>Coming Soon</p>
+<input
+type="number"
+id="cidrOnly"
+min="1"
+max="32"
+placeholder="Masukkan CIDR">
+
+<button onclick="hitungCIDR()">
+Hitung
+</button>
+
+<div id="hasilCIDR"></div>
 
 </div>
 
@@ -165,7 +176,16 @@ Hitung
 
 <h3>🔎 IP Class Detector</h3>
 
-<p>Coming Soon</p>
+<input
+type="text"
+id="ipClass"
+placeholder="192.168.1.1">
+
+<button onclick="cekIPClass()">
+Deteksi
+</button>
+
+<div id="hasilClass"></div>
 
 </div>
 
