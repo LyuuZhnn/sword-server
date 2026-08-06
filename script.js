@@ -380,3 +380,125 @@ hasil.innerHTML=`
 `;
 
 }
+
+// ===== LIVE MONITORING CHART =====
+const chartCanvas = document.getElementById("liveChart");
+
+if (chartCanvas) {
+
+const ctx = chartCanvas.getContext("2d");
+
+const labels = [];
+const cpuData = [];
+const ramData = [];
+const pingData = [];
+
+const liveChart = new Chart(ctx, {
+
+type: "line",
+
+data: {
+
+labels: labels,
+
+datasets: [
+
+{
+label: "CPU %",
+data: cpuData,
+borderColor: "#00ffff",
+tension: 0.3
+},
+
+{
+label: "RAM %",
+data: ramData,
+borderColor: "#00ff66",
+tension: 0.3
+},
+
+{
+label: "PING",
+data: pingData,
+borderColor: "#ffcc00",
+tension: 0.3
+}
+
+]
+
+},
+
+options: {
+
+responsive: true,
+
+animation: false,
+
+plugins: {
+
+legend: {
+
+labels: {
+
+color: "white"
+
+}
+
+}
+
+},
+
+scales: {
+
+x: {
+
+ticks: {
+
+color: "white"
+
+}
+
+},
+
+y: {
+
+ticks: {
+
+color: "white"
+
+},
+
+beginAtZero: true,
+
+max: 100
+
+}
+
+}
+
+}
+
+});
+
+setInterval(() => {
+
+if(labels.length >= 15){
+
+labels.shift();
+cpuData.shift();
+ramData.shift();
+pingData.shift();
+
+}
+
+labels.push(new Date().toLocaleTimeString());
+
+cpuData.push(Math.floor(Math.random()*70)+20);
+ramData.push(Math.floor(Math.random()*60)+30);
+pingData.push(Math.floor(Math.random()*20)+2);
+
+liveChart.update();
+
+},2000);
+
+}
