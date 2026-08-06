@@ -16,6 +16,14 @@ window.location.href="login.html";
 }
 
 window.onload = () => {
+document.getElementById("welcomeName").innerHTML =
+localStorage.getItem("tnos_username");
+
+document.getElementById("welcomeClass").innerHTML =
+localStorage.getItem("tnos_kelas");
+
+document.getElementById("welcomeRole").innerHTML =
+localStorage.getItem("tnos_role");
 
 const loading=document.querySelector(".loading");
 
