@@ -192,7 +192,7 @@ console.log("TNOS V5 Ultimate Loaded 🚀");
 
 function hitungSubnet(){
 
-let ip=document.getElementById("ip").value;
+let ip=document.getElementById("ip").value.trim();
 let cidr=parseInt(document.getElementById("cidr").value);
 
 let hasil=document.getElementById("hasilSubnet");
@@ -200,6 +200,49 @@ let hasil=document.getElementById("hasilSubnet");
 if(!ip || isNaN(cidr)){
 hasil.innerHTML="Masukkan IP dan CIDR!";
 return;
+}
+
+let p=ip.split(".").map(Number);
+
+if(p.length!==4 || p.some(n=>isNaN(n)||n<0||n>255) || cidr<1 || cidr>32){
+hasil.innerHTML="IP atau CIDR tidak valid!";
+return;
+}
+
+let ipNum=((p[0]<<24)>>>0)+((p[1]<<16)>>>0)+((p[2]<<8)>>>0)+p[3];
+
+let mask=(cidr===0)?0:(0xffffffff<<(32-cidr))>>>0;
+
+let network=ipNum & mask;
+
+let broadcast=(network | (~mask>>>0))>>>0;
+
+function toIP(num){
+return[
+(num>>>24)&255,
+(num>>>16)&255,
+(num>>>8)&255,
+num&255
+].join(".");
+}
+
+let first=(cidr==32)?network:network+1;
+let last=(cidr==32)?network:broadcast-1;
+
+let total=Math.pow(2,32-cidr);
+let usable=(cidr>=31)?0:total-2;
+
+hasil.innerHTML=`
+<b>📍 IP Address :</b> ${ip}<br>
+<b>🌐 Network :</b> ${toIP(network)}<br>
+<b>📡 Broadcast :</b> ${toIP(broadcast)}<br>
+<b>✅ First Host :</b> ${toIP(first)}<br>
+<b>🚀 Last Host :</b> ${toIP(last)}<br>
+<b>🎭 Subnet Mask :</b> ${toIP(mask)}<br>
+<b>👥 Total Host :</b> ${total}<br>
+<b>💻 Usable Host :</b> ${usable}
+`;
+
 }
 
 let octet=ip.split(".");
