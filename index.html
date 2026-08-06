@@ -15,6 +15,16 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
 
 <body>
 
+<script>
+
+if(!localStorage.getItem("tnos_username")){
+
+window.location.href="login.html";
+
+}
+
+</script>
+
 <div class="loading">
 
 <h1>TNOS V6</h1>
@@ -51,6 +61,10 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
 
 <a href="#about">About</a>
 
+<a href="#" onclick="logout()">
+🚪 Logout
+</a>
+
 </nav>
 
 <div id="clock">00:00:00</div>
@@ -63,9 +77,9 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
 
 <h2>WELCOME</h2>
 
-<h3>MUSYAFFA HANIF SUNNI</h3>
+<h3 id="welcomeName">Loading...</h3>
 
-<p>SMK NEGERI 1 ADIWERNA • XI TJKT 2</p>
+<p id="welcomeClass">Loading...</p>
 
 <button class="start-btn">
 Open Dashboard

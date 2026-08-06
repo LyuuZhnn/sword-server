@@ -1,3 +1,36 @@
+const username = localStorage.getItem("tnos_username");
+const kelas = localStorage.getItem("tnos_kelas");
+
+if(!username){
+window.location.href="login.html";
+}
+
+const nama=localStorage.getItem("tnos_username");
+const kelas=localStorage.getItem("tnos_kelas");
+
+if(!nama){
+
+window.location.href="login.html";
+
+}
+
+window.onload = () => {
+
+const loading=document.querySelector(".loading");
+
+setTimeout(()=>{
+if(loading) loading.style.display="none";
+},1800);
+
+const nama=document.getElementById("welcomeName");
+const cls=document.getElementById("welcomeClass");
+
+if(nama) nama.innerHTML=username;
+
+if(cls) cls.innerHTML=kelas;
+
+};
+
 // ===== LOADING =====
 window.onload = () => {
     setTimeout(() => {
@@ -500,5 +533,14 @@ pingData.push(Math.floor(Math.random()*20)+2);
 liveChart.update();
 
 },2000);
+
+}
+
+function logout(){
+
+localStorage.removeItem("tnos_username");
+localStorage.removeItem("tnos_kelas");
+
+window.location.href="login.html";
 
 }
